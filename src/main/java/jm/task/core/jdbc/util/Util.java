@@ -18,6 +18,7 @@ public class Util {
     private static final String PAS = "++++";
     private static final String URL = "jdbc:mysql://localhost:3306/test";
     private static Connection connection;
+    private static SessionFactory sessionFactory;
 
     public static Connection getConnection() {
         try {
@@ -39,7 +40,7 @@ public class Util {
         return connection;
     }
 
-    private static SessionFactory sessionFactory;
+
 
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
@@ -68,5 +69,8 @@ public class Util {
         }
         return sessionFactory;
 
+    }
+    public static void closeSession(){
+        getSessionFactory().close();
     }
 }
